@@ -1,0 +1,148 @@
+# Simple workflow for deploying static content to GitHub Pages
+name: Deploy static content to Pages
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Single deploy job since we're just deploying
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          # Upload entire repository
+          path: '.'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+
+
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Chinmaya Vidyalaya Southpark</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body, h1, h3 {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        header {
+            background-color: #022950;
+            color: white;
+            padding: 20px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            margin-right: 20px;
+        }
+        nav ul li:last-child {
+            margin-right: 0;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+        nav ul li a:hover {
+            color: #f7ca18;
+        }
+        .welcome-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(66, 64, 64, 0.589);
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            animation: fade-in 1s ease-in-out;
+        }
+        @keyframes fade-in {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        footer {
+            background-color: #000;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="school-logo">
+            <img src="download-removebg-preview.png" alt="Chinmaya Vidyalaya School logo" width="80" height="126">
+        </div>
+        <div>
+            <h1>Welcome to Chinmaya Vidyalaya Southpark</h1>
+            <h4>School with a Difference</h4>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#admission">Admission</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="school-image-container">
+            <div class="welcome-overlay">
+                <h1>Welcome to our School Website!</h1>
+                <h3>We are dedicated to providing the best education and nurturing future leaders.</h3>
+                <h3>This site is under construction!</h3>
+            </div>
+            <img class="school-image" src="img school.jpg" alt="Chinmaya Vidyalaya School" width="100%" height="auto">
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2023-27 Chinmaya Vidyalaya. All rights reserved.</p>
+        <p>Created by Alaraaf Hassan on 9<sup>th</sup> August, 2023.</p>
+    </footer>
+</body>
+</html>
+
